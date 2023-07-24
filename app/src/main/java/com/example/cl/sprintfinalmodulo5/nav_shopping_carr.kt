@@ -46,11 +46,23 @@ class nav_shopping_carr : Fragment() {
 
     private fun initListener() {
 
-        binging.imgCarrito.setOnClickListener(View.OnClickListener {
+       /* binging.imgCarrito.setOnClickListener(View.OnClickListener {
             findNavController(requireView()).navigate(
                 R.id.action_nav_shopping_carr_to_carrito
             )
         })
+
+        */
+
+        binging.imgCarrito.setOnClickListener {
+            findNavController(requireView()).navigate(R.id.action_nav_shopping_carr_to_carrito)
+        }
+        val adapter = Adapter()
+        val zapatos = zapatos()
+
+        val listaZapatos = zapatos.returnShoeList()
+        adapter.setData(listaZapatos)
+        binging.recyclerView.adapter =adapter
     }
 
     companion object {

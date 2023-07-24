@@ -22,5 +22,17 @@
         <action
             android:id="@+id/action_nav_shopping_carr_to_carrito"
             app:destination="@id/carrito" />
+        <action
+            android:id="@+id/action_nav_shopping_carr_to_detalle"
+            app:destination="@id/detalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalle"
+        android:name="com.example.cl.sprintfinalmodulo5.detalle"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" >
+        <action
+            android:id="@+id/action_detalle_to_carrito"
+            app:destination="@id/carrito" />
     </fragment>
 </navigation>
