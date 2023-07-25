@@ -66,7 +66,7 @@ class Carrito : Fragment(), Eliminar {
 
         adapter.setData(lista)
         binging.recyclerViewCarro.adapter=adapter
-        var valorTotal:Double = calcularValor(lista)
+
 
 
 
@@ -76,18 +76,10 @@ class Carrito : Fragment(), Eliminar {
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_carrito_to_nav_shopping_carr)
         }
-        bingingAdapterCarrito.btnBorrarSeleccionado.setOnClickListener{
-            valorTotal = calcularValor(lista)
-        }
+
     }
 
-    private fun calcularValor(lista:MutableList<zapato>): Double {
-        var valorTotal:Double=0.0
-        lista.forEach { data ->
-            valorTotal += data.precio.toInt()
-        }
-        return valorTotal
-    }
+
 
     fun getList(): MutableList<zapato> {
         val jsonString = mSharedPreferences.getString("mi lista", null)

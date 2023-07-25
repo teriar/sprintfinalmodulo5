@@ -55,7 +55,7 @@ class AdapterCarro(val eliminar:Eliminar):RecyclerView.Adapter <AdapterCarro.Vie
                 notifyDataSetChanged()
 
                 eliminar.eliminar(item)
-                Log.d("esto", "dsa")
+
 
 
 
