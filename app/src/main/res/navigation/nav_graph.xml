@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/carrito"
-        android:name="com.example.cl.sprintfinalmodulo5.carrito"
+        android:name="com.example.cl.sprintfinalmodulo5.Carrito"
         android:label="fragment_carrito"
         tools:layout="@layout/fragment_carrito" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/detalle"
-        android:name="com.example.cl.sprintfinalmodulo5.detalle"
+        android:name="com.example.cl.sprintfinalmodulo5.Detalle"
         android:label="fragment_detalle"
         tools:layout="@layout/fragment_detalle" >
         <action

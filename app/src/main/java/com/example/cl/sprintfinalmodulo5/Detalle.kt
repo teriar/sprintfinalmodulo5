@@ -1,11 +1,8 @@
 package com.example.cl.sprintfinalmodulo5
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +26,8 @@ private const val ARG_PARAM3 = "url"
  * Use the [detalle.newInstance] factory method to
  * create an instance of this fragment.
  */
-class detalle : Fragment(),IviewPresenter {
+
+class Detalle : Fragment(),IviewPresenter {
     private lateinit var binging:FragmentDetalleBinding
     private lateinit var mSharedPreferences:SharedPreferences
     private lateinit var gson: Gson
@@ -80,7 +78,7 @@ class detalle : Fragment(),IviewPresenter {
     }
 
     private fun SaveData() {
-        val preferences = this.requireActivity().getSharedPreferences("pref", MODE_PRIVATE)
+
         binging.btnComprar.setOnClickListener{
 
 
@@ -124,7 +122,7 @@ class detalle : Fragment(),IviewPresenter {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            detalle().apply {
+            Detalle().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -135,6 +133,7 @@ class detalle : Fragment(),IviewPresenter {
     override fun guardarData(data: MutableList<zapato>) {
        zapatoslista = data
     }
+
 
 
 }

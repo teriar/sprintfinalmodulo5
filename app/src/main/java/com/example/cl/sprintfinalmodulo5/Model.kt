@@ -11,5 +11,9 @@ class Model {
         zapatos.add(zapato)
         return zapatos
     }
+    fun eliminarData(zapato: zapato):MutableList<zapato>{
+        zapatos.remove(zapato)
+        return zapatos
+    }
 
 }

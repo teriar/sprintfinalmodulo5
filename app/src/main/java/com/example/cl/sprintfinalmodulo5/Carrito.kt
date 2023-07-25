@@ -3,14 +3,11 @@ package com.example.cl.sprintfinalmodulo5
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cl.sprintfinalmodulo5.databinding.FragmentCarritoBinding
-import com.example.cl.sprintfinalmodulo5.databinding.FragmentDetalleBinding
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.example.cl.sprintfinalmodulo5.databinding.ItemCarritoBinding
 import com.google.gson.Gson
@@ -26,11 +23,15 @@ private const val ARG_PARAM2 = "param2"
  * Use the [carrito.newInstance] factory method to
  * create an instance of this fragment.
  */
-class carrito : Fragment() {
+interface Eliminar{
+    fun eliminar(shoe: zapato)
+}
+class Carrito : Fragment(), Eliminar {
     private lateinit var mSharedPreferences: SharedPreferences
     private lateinit var gson: Gson
     private lateinit var binging: FragmentCarritoBinding
     private lateinit var bingingAdapterCarrito: ItemCarritoBinding
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -61,7 +62,8 @@ class carrito : Fragment() {
         mSharedPreferences =requireContext().getSharedPreferences("data", Context.MODE_PRIVATE)
         gson = Gson()
         var lista =getList()
-        val adapter = AdapterCarro()
+        val adapter = AdapterCarro(this)
+
         adapter.setData(lista)
         binging.recyclerViewCarro.adapter=adapter
         var valorTotal:Double = calcularValor(lista)
@@ -105,11 +107,23 @@ class carrito : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            carrito().apply {
+            Carrito().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun eliminar(shoe: zapato) {
+        val zapatoslista = getList()
+        zapatoslista.remove(shoe)
+
+
+        mSharedPreferences =requireContext().getSharedPreferences("data", Context.MODE_PRIVATE)
+        gson = Gson()
+
+        val jsonString = gson.toJson(zapatoslista)
+        mSharedPreferences.edit().putString("mi lista", jsonString).apply()
     }
 }
